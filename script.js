@@ -38,4 +38,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+
+  const videoModal = document.querySelector('[data-video-modal]');
+  const video = videoModal?.querySelector('video');
+  const openVideo = document.querySelector('[data-video-open]');
+  const closeVideo = () => {
+    if (!videoModal) return;
+    video?.pause();
+    videoModal.classList.remove('is-open');
+    videoModal.hidden = true;
+  };
+  openVideo?.addEventListener('click', () => {
+    if (!videoModal) return;
+    videoModal.hidden = false;
+    videoModal.classList.add('is-open');
+    videoModal.querySelector('[data-video-close]')?.focus();
+    video?.play().catch(() => {});
+  });
+  videoModal?.querySelector('[data-video-close]')?.addEventListener('click', closeVideo);
+  videoModal?.addEventListener('click', (event) => {
+    if (event.target === videoModal) closeVideo();
+  });
+
+  const dobForm = document.querySelector('[data-dob-form]');
+  const dobInput = document.querySelector('#dob');
+  const dobError = document.querySelector('[data-dob-error]');
+  const protectedLetter = document.querySelector('[data-protected-letter]');
+  const letterLock = document.querySelector('[data-letter-lock]');
+  dobForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const entered = (dobInput?.value || '').trim();
+    if (entered === '27091998') {
+      letterLock?.setAttribute('hidden', '');
+      protectedLetter?.removeAttribute('hidden');
+      protectedLetter?.setAttribute('aria-hidden', 'false');
+      if (dobError) dobError.textContent = '';
+      protectedLetter?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    if (dobError) dobError.textContent = 'That date did not open the letter. Please try again.';
+    dobInput?.focus();
+    dobInput?.select();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && videoModal?.classList.contains('is-open')) closeVideo();
+  });
 });

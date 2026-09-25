@@ -32,6 +32,7 @@
           <p class="hero-intro">This is the first birthday I get to celebrate after our engagement—with a ring, a promise, and a forever that finally has your name beside mine.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="letter.html">read your letter <span>↗</span></a>
+            <button class="button button-video" type="button" data-video-open>watch your video <span>▶</span></button>
             <a class="text-link" href="story.html">start at the beginning <span>↓</span></a>
           </div>
         </div>
@@ -85,6 +86,18 @@
         </a>
       </section>
     </main>
+
+    <div class="video-modal" data-video-modal hidden>
+      <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="video-title">
+        <button class="video-close" type="button" data-video-close aria-label="Close video">×</button>
+        <p class="eyebrow">a little film for you</p>
+        <h2 id="video-title">Our love story,<br /><em>in motion.</em></h2>
+        <video controls playsinline preload="metadata">
+          <source src="assets/photos/birthday_love_story_THE_FINAL_EDIT.mp4" type="video/mp4" />
+          Your browser does not support video playback.
+        </video>
+      </div>
+    </div>
 
     <footer class="site-footer section-shell"><span>made with a full heart</span><span>for indu · 2026</span></footer>
   </body>

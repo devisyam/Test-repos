@@ -23,4 +23,6 @@ JPG, PNG, and WebP all work. If a file is missing, the site keeps the designed p
 - `gallery.html` — the photo memory archive
 - `letter.html` — the birthday letter, with a print/save button
 
+The homepage includes a **Watch your video** button that opens `assets/photos/birthday_love_story_THE_FINAL_EDIT.mp4` in a modal player. The letter page is protected by a simple browser-side DOB gate; enter `27091998` in `DDMMYYYY` format to reveal it.
+
 To change the letter or wording, edit the text directly in the relevant HTML file. To change the birthday date, update the `data-countdown` value in `index.html` and the visible date text where needed.
